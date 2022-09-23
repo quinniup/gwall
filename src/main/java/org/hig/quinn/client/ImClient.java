@@ -30,9 +30,8 @@ public class ImClient {
                     .channel(NioSocketChannel.class)
                     .option(ChannelOption.SO_KEEPALIVE, true)
                     .handler(new ChannelInitializer<SocketChannel>() {
-
                         @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
+                        protected void initChannel(SocketChannel ch) {
                             ch.pipeline().addLast("encoder", new StringEncoder());
                             ch.pipeline().addLast("decoder", new StringDecoder());
                             ch.pipeline().addLast(new ClientStringHandler());
